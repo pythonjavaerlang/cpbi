@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block banner %}{% endblock %}
+{% block content %}
+<div class="header_logo">
+    <div class="container">
+        <a class="logo desktop" href="/{{ fixed.library }}/" title="Бібліотека"><h1>Бібліотека</h1></a>
+    </div>
+</div>
+<section id="useful-info">
+    <div class="container">
+        <div class="text-content">
+            <ul>
+                {% for book in books %}
+                <li><h3><a href="/{{ book.slug }}/{{ book.first_chapter_slug }}/">{{ book.title }}</a></h3>
+                    {% if book.short_description %}<p>{{ book.short_description | safe }}</p>{% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <aside id="form-control">
+            <div id="home-link"><a href="/">Дивись також</a></div>
+            <nav><ul id="form-menu">
+                <li><a href="/{{ fixed.bible }}/">Тлумачення Святого Письма</a></li>
+                <li><a href="/{{ fixed.lecture }}/">Відео-лекції</a></li>
+                <li><a href="/{{ fixed.journal }}/">Науково-Богословський Журнал</a></li>
+            </ul></nav>
+        </aside>
+    </div>
+    <div class="clearfix"></div>
+</section>
+{% endblock %}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    {{ seo_head(meta) }}
+    <link href="{{ media_url }}css/book_normalize.css" rel="stylesheet" type="text/css">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link href="{{ media_url }}css/book.css" rel="stylesheet" type="text/css">
+    {% if chapter.css %}<style type="text/css">{{ chapter.css }}</style>{% endif %}
+</head>
+<body>
+<header id="header">
+    <div class="full-width-container">
+        <div id="logo-wrapper">
+            <a class="desktop" href="/{{ fixed.library }}/">
+                <img alt="{{ site_name }}" src="{{ media_url }}cpbi-building_w.png">
+            </a>
+        </div>
+        <div class="header-title"><h2>{{ chapter.title }}</h2></div>
+        <div class="header-buttons"><ul>
+            <li class="open-chapters-popup"><i class="fas fa-list"></i></li>
+            <li class="fullscreen"><i class="fas fa-expand-arrows-alt"></i></li>
+            <li class="dropdown">
+                <button class="dropdownButton"><i class="fas fa-font"></i></button>
+                <div class="dropdown-content" id="m1" style="min-width: 250px; right: -13px;">
+                    <div class="arrow_box">
+                        <div class="fontSizeSelect">
+                            <button id="decfont"><i class="fas fa-font" style="font-size: 14px;"></i></button>
+                            <button id="incfont"><i class="fas fa-font"></i></button>
+                        </div>
+                        <div class="fontHeightSelect">
+                            <button id="line-height-small"><i class="fas fa-grip-lines" style="font-size: 16px"></i></button>
+                            <button id="line-height-medium"><i class="fas fa-grip-lines" style="font-size: 21px"></i></button>
+                            <button id="line-height-big"><i class="fas fa-grip-lines" style="font-size: 29px;"></i></button>
+                        </div>
+                        <div class="fontColorSelect">
+                            <button id="white" style="background: #ffffff">Білий</button>
+                            <button id="sepia" style="background: #F5EFDD; color:#6e422f;">Сепія</button>
+                            <button id="black" style="background: #000000; color:#bababa;">Чорний</button>
+                        </div>
+                        <div class="fontSelect">
+                            <a class="arial" href="#">Arial(default)</a>
+                            <a class="times" href="#">Times</a>
+                            <a class="verdana" href="#">Verdana</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdownButton"><i class="fas fa-ellipsis-h"></i></button>
+                <div class="dropdown-content" id="m2"><div class="arrow_box">
+                    <a class="open-about-popup" href="#">Про Книгу</a>
+                </div></div>
+            </li>
+        </ul></div>
+        <div class="clearfix"></div>
+    </div>
+</header>
+<main id="main">
+    <div class="full-width-container">
+        <section id="book">
+            {% if chapter_map %}
+            <figure style="text-align:center;margin:0 0 1.5em;">
+                <img src="{{ chapter_map }}" alt="Карта: {{ chapter.title }}" style="max-width:100%;height:auto;border:1px solid #ddd;border-radius:4px;" loading="lazy">
+                <figcaption style="font-size:.85em;color:#666;margin-top:.4em;">Карта місць, згаданих у книзі «{{ chapter.title }}»</figcaption>
+            </figure>
+            {% endif %}
+            {{ chapter.text | safe }}
+        </section>
+    </div>
+    <div class="pagination-arrows" id="arrow-left">
+        {% if prev_url %}<a href="{{ prev_url }}"><i class="fas fa-chevron-left"></i></a>{% endif %}
+    </div>
+    <div class="pagination-arrows" id="arrow-right">
+        {% if next_url %}<a href="{{ next_url }}"><i class="fas fa-chevron-right"></i></a>{% endif %}
+    </div>
+</main>
+<footer id="footer">
+    <div class="full-width-container">
+        <div class="buttons">
+            {% if prev_url %}<a class="previous" href="{{ prev_url }}" style="float:left;">&laquo; "{{ prev_title }}"</a>{% endif %}
+            {% if next_url %}<a class="next" href="{{ next_url }}" style="float: right;">"{{ next_title }}" &raquo;</a>{% endif %}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</footer>
+<div class="chapters-popup popup"><div class="popup-content">
+    <div class="popup-header"><span class="popup-title">Зміст</span>
+        <span class="close close-chapters-popup"><i class="fa fa-times"></i></span></div>
+    <div class="popup-items"><ul>
+        {% for ch in contents %}
+        <li><a href="/{{ book.slug }}/{{ ch.slug }}/">{{ ch.title }}</a></li>
+        {% endfor %}
+    </ul></div>
+</div></div>
+<div class="about-popup popup"><div class="popup-content">
+    <div class="popup-header"><span class="popup-title">Про книгу</span>
+        <span class="close close-about-popup"><i class="fa fa-times"></i></span></div>
+    <div class="popup-inner-content">{% if chapter.description %}<p>{{ chapter.description }}</p>{% elif book.short_description %}{{ book.short_description | safe }}{% else %}<p>{{ book.title }}</p>{% endif %}</div>
+</div></div>
+<script src="{{ media_url }}js/book.js"></script>
+{% if ga_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ ga_id }}');</script>
+{% endif %}
+</body>
+</html>

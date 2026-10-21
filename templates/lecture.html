@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block banner %}{% endblock %}
+{% block content %}
+<div class="header_logo"><div class="container">
+    <a class="logo desktop" href="/{{ fixed.lecture }}/"><h1>Відео-лекції</h1></a>
+</div></div>
+<section id="useful-info" class="lectures"><div class="container">
+    <div class="text-content">
+        <br/><br/>
+        <center><p>Перегляньте відео-лекції на нашому каналі
+            <b><a href="https://www.youtube.com/channel/UCMCXAZS8OwkxE7aXoQfJh2A" target="_blank" rel="noopener">YouTube</a></b>.</p></center>
+        <br/><br/>
+    </div>
+    <aside id="form-control">
+        <div id="home-link"><a href="/">Дивись також</a></div>
+        <nav><ul id="form-menu">
+            <li><a href="/{{ fixed.library }}/">Бібліотека</a></li>
+            <li><a href="/{{ fixed.bible }}/">Тлумачення Святого Письма</a></li>
+        </ul></nav>
+    </aside>
+</div><div class="clearfix"></div></section>
+{% endblock %}

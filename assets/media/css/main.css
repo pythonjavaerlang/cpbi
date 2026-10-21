@@ -1,0 +1,1691 @@
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+/*::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}*/
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+
+/* ==========================================================================
+	Contains main css code
+	@Author: Yura Heiko
+   ========================================================================== */
+
+@font-face {
+    font-family: 'Georgia';
+    src: url('../fonts/Georgia.ttf') format('ttf'),
+    url('../fonts/Georgia.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1075px;
+    margin: 0 auto;
+}
+
+#header #top-header {
+    padding: 20px 15px;
+    background: #3366ff;
+    line-height: 1;
+}
+
+#top-header #logo-wrapper {
+    float: left;
+    max-width: 555px;
+}
+
+#top-header #logo-wrapper a.mobile {
+    display: none;
+}
+
+#top-header #header-buttons {
+    float: right;
+}
+
+#top-header #header-buttons a {
+    display: inline-block;
+}
+
+#top-header #header-buttons a:not(:last-child) {
+    margin-right: 5px;
+}
+
+body .standard-button {
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    border: 1px solid #82788D;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+#top-header #header-buttons .standard-button .fas {
+    font-size: 13px;
+}
+
+body .yellow-button {
+    background: #FBB034 !important;
+    color: #63575B;
+    border-color: #FBB034;
+}
+
+body .red-button {
+    background: #990000 !important;
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+body .standard-button:hover {
+    opacity: 0.9;
+}
+
+#banner .container {
+    position: relative;
+}
+
+#banner #banner-block {
+    position: absolute;
+    max-width: 550px;
+    min-height: 210px;
+    top: 35px;
+    right: 0;
+    background: url("../img/banner-block_BG.png");
+    z-index: 1;
+}
+
+#banner #banner-block .title h2 {
+    font-family: 'Georgia', serif;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 10px 0;
+    margin: 0 15px;
+    border-bottom: 1px solid #CCCCCC;
+    font-size: 27px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#banner #banner-block .text {
+    margin: 15px 15px 0;
+}
+
+#banner #banner-block .text p {
+    color: #ffffff;
+    font-size: 15px;
+}
+
+#banner #banner-block .more-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#banner #banner-block .more-button a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+    background: #3366ff url(../img/more-button-arrow-right.png) no-repeat 100% 0;
+    background-size: contain;
+    padding: 0 45px 0 26px;
+    font-size: 17px;
+    display: block;
+    height: 35px;
+    line-height: 2;
+}
+
+#banner #banner-block .more-button a:hover {
+    opacity: 0.8;
+}
+
+#banner video {
+    width: 100%;
+}
+
+#bottom-header {
+    padding: 25px 15px;
+    background: #3366ff;
+}
+
+#bottom-header #main-menu {
+    float: left;
+}
+
+#bottom-header #main-menu li {
+    display: inline-block;
+}
+
+#bottom-header #main-menu li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 5px 0;
+    font-size: 15px;
+}
+
+#bottom-header #main-menu li.mobile {
+    display: none;
+}
+
+#bottom-header #main-menu li.mobile:first-child a {
+    border-color: #FBB034;
+}
+
+#bottom-header #main-menu li:not(:first-child) a {
+    margin-left: 70px;
+}
+
+#bottom-header #main-menu li a:hover {
+    opacity: 0.7;
+}
+
+#main #events #join-us {
+    padding: 30px 15px;
+    float: left;
+    width: 40%;
+    background: #EFF2F9;
+}
+
+#events #join-us #join-us-content {
+    max-width: 375px;
+    float: right;
+}
+
+#events #join-us .section-subtitle {
+    font-family: 'Georgia', serif;
+    text-transform: capitalize;
+}
+
+#events #join-us .section-subtitle h4 {
+    font-size: 17px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #594B66;
+}
+
+#events #join-us #join-us-buttons {
+    margin-top: 25px;
+    text-align: center;
+}
+
+#events #join-us #join-us-buttons .standard-button {
+    text-transform: uppercase;
+    background: #3366ff;
+    border: none;
+    display: inline-block;
+}
+
+#events #join-us #join-us-buttons .standard-button .fas {
+    font-size: 15px;
+}
+
+#events #join-us .text {
+    margin-top: 20px;
+}
+
+#events #join-us .text p {
+    font-size: 13px;
+    color: #B0AEBE;
+}
+
+#events #join-us .text p a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#events #join-us .text p a:hover {
+    text-decoration: underline;
+}
+
+#events #last-events {
+    padding: 30px 15px;
+    float: right;
+    width: 60%;
+}
+
+#events #last-events .section-title {
+    border-bottom: 2px solid #CCCCCC;
+}
+
+#events #last-events .section-title h3 {
+    font-family: 'Georgia', serif;
+    text-transform: capitalize;
+    font-size: 25px;
+    border-bottom: 8px solid #CCCCCC;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+#events #last-events #upcoming-events {
+    margin-top: 25px;
+}
+
+#events #last-events #upcoming-events .some-event {
+    display: inline-block;
+    float: left;
+}
+
+#events #last-events #upcoming-events .some-event:not(:first-child) {
+    margin-left: 30px;
+}
+
+#events #last-events #upcoming-events .some-event .event-date {
+    font-family: 'Georgia', sans-serif;
+    color: #0793C7;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    float: left;
+}
+
+#events #last-events #upcoming-events .some-event .event-date .day {
+    border-bottom: 1px solid #FBB034;
+}
+
+#events #last-events #upcoming-events .some-event .event-day-number {
+    text-transform: uppercase;
+    color: #FBB034;
+    font-size: 45px;
+    float: left;
+    line-height: 0.8;
+    margin-left: 15px;
+}
+
+#events #last-events #upcoming-events .some-event .event-title {
+    margin-left: 30px;
+    max-width: 215px;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#events #last-events #upcoming-events .some-event .event-title a {
+    text-decoration: none;
+    color: #07759B;
+}
+
+#events #last-events #upcoming-events .some-event .event-title .event-date-place {
+    text-decoration: none;
+    color: #563861;
+    display: inline-block;
+}
+
+#main #events #last-events #upcoming-events .more-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#main .more-button a {
+    text-transform: capitalize;
+    color: #0E759B;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#main .more-button a:hover {
+    text-decoration: underline;
+}
+
+#study .left,
+#study .right {
+    width: 50%;
+    padding: 15px 0 20px;
+}
+
+#study .left .study-block {
+    margin-right: 40px;
+}
+
+#study .right .study-block {
+    margin-left: 40px;
+}
+
+#study .study-block {
+    width: 505px;
+    margin: 0 auto;
+}
+
+#study .study-block .image {
+    max-width: 100px;
+    height: 75px;
+    margin: 0 auto 15px;
+}
+
+#study .study-block .image img {
+    object-fit: scale-down;
+}
+
+#study .study-block .section-title h3 {
+    font-family: 'Georgia', serif;
+    text-transform: uppercase;
+    font-size: 26px;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #594B66;
+    color: #3E3E3E;
+}
+
+#study .study-block .main-types-buttons {
+    margin-top: 20px;
+}
+
+#study .study-block .main-types-buttons .column {
+    display: block;
+}
+
+#study .study-block .main-types-buttons .column:not(:first-child) {
+    margin-top: 20px;
+}
+
+#study .study-block .main-types-buttons .column a:first-child {
+    float: left;
+}
+
+#study .study-block .main-types-buttons .column a:last-child {
+    float: right;
+}
+
+#study .study-block .main-types-buttons .column a {
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: #3366FF;
+    color: #ffffff;
+    min-width: 245px;
+    min-height: 80px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 30px 15px;
+}
+
+#study .study-block .main-types-buttons .column a:hover {
+    opacity: 0.9;
+}
+
+#study .right .main-types-buttons .column a {
+    background: #F5F5F5;
+    color: #3E3E3E;
+}
+
+#study .right .main-types-buttons .column a:hover {
+    opacity: 0.8;
+}
+
+#main #useful-info {
+    padding: 45px 15px 60px;
+}
+
+#main #useful-info a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#main #useful-info .column:not(:first-child) {
+    margin-top: 20px;
+}
+
+#useful-info .useful-info-item {
+    display: inline-block;
+    max-width: 315px;
+    vertical-align: top;
+}
+
+#useful-info .useful-info-item:not(:first-child) {
+    margin-left: 30px;
+}
+
+#useful-info .useful-info-item .item-title {
+    margin-bottom: 10px;
+}
+
+#useful-info .useful-info-item .item-title h3 {
+    font-family: 'Georgia', serif;
+    color: #000007;
+    text-transform: capitalize;
+    font-size: 17px;
+}
+
+#useful-info .useful-info-item .item-title h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#useful-info .useful-info-item .item-title .date {
+    margin-top: 3px;
+    font-size: 14px;
+    color: #999;
+}
+
+#useful-info .useful-info-item .text p {
+    color: #6A6666;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+#useful-info .useful-info-item .more-button {
+    text-align: left;
+    margin-top: 15px;
+}
+
+#footer {
+    background: url('../img/footer-image.png') no-repeat right top,
+    linear-gradient(to right, #00005e 0%, #ccc 100%);
+    padding: 25px 15px 60px;
+    position: relative;
+}
+
+#footer .footer-title h2 {
+    font-family: 'Georgia', serif;
+    text-transform: capitalize;
+    color: #ffffff;
+    font-weight: normal;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #35393B;
+    font-size: 20px;
+}
+
+#footer .footer-content {
+    margin-top: 15px;
+}
+
+#footer .footer-content .footer-item {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#footer .footer-content .footer-item:not(:first-child) {
+    margin-left: 75px;
+}
+
+#footer .footer-content li {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+#footer .footer-content li a {
+    text-decoration: none;
+    display: inline-block;
+    text-transform: capitalize;
+    color: inherit;
+}
+
+#footer .footer-content .footer-item li a:hover {
+    opacity: 0.7;
+}
+
+#footer .footer-content .footer-item li:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+#footer .footer-content .footer-item .footer-menu li.desktop {
+    display: inline-block;
+    margin: 5px 0;
+}
+
+#footer .footer-content .footer-item .footer-menu li.desktop:last-child {
+    margin-left: 5px;
+}
+
+#footer .footer-content ul.mobile {
+    display: none;
+    margin-top: 10px;
+}
+
+#footer .footer-content ul.mobile li {
+    display: inline-block;
+    margin: 5px;
+}
+
+#footer .footer-content #contacts {
+    margin-top: 35px;
+    line-height: 1.8;
+}
+
+#footer .footer-content #contacts li a:hover {
+    text-decoration: underline;
+}
+
+#footer .footer-content #contacts li#email a {
+    color: white;
+}
+
+#footer .footer-marker {
+    position: absolute;
+    top: 207px;
+    right: 152px;
+}
+
+#footer .footer-marker a {
+    text-decoration: none;
+    color: #ffffff;
+    background: url("../img/marker.png") no-repeat;
+    background-size: cover;
+    min-width: 64px;
+    min-height: 21px;
+    font-size: 11px;
+    text-align: center;
+    display: block;
+    border-radius: 2px;
+}
+
+#footer .footer-marker a:hover {
+    opacity: 0.8;
+}
+
+@media only screen and (max-width: 1300px) {
+
+    #events #last-events #upcoming-events .some-event:not(:first-child) {
+        margin-left: 10px;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-date {
+        font-size: 12px;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-day-number {
+        margin-left: 5px;
+        font-size: 35px;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-title {
+        font-size: 13px;
+    }
+
+    #study .right .study-block {
+        margin-left: auto;
+    }
+}
+
+@media only screen and (max-width: 1074px) {
+    .container {
+        width: 100%;
+    }
+
+    #header #top-header,
+    #bottom-header {
+        padding: 15px 10px;
+        text-align: center;
+    }
+
+    #top-header #logo-wrapper {
+        margin: 0 auto;
+        max-width: 70px;
+    }
+
+    #top-header #logo-wrapper a.desktop {
+        display: none;
+    }
+
+    #top-header #logo-wrapper a.mobile {
+        display: block;
+    }
+
+    #top-header #header-buttons {
+        float: none;
+        margin-top: 15px;
+        display: none;
+    }
+
+    #banner {
+        position: relative;
+    }
+
+    #banner .container {
+        position: inherit;
+    }
+
+    #banner video {
+        display: none;
+    }
+
+    #banner #banner-block {
+        padding: 10px 0;
+        position: initial;
+        width: 100%;
+        max-width: inherit;
+        min-height: inherit;
+    }
+
+    #banner #banner-block .title h2 {
+        padding-top: inherit;
+        font-size: 25px;
+    }
+
+    #banner #banner-block .text p {
+        font-size: 13px;
+    }
+
+    #banner #banner-block .more-button {
+        position: initial;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    #banner #banner-block .more-button a {
+        padding-right: inherit;
+        background: none;
+        font-size: 15px;
+        height: inherit;
+    }
+
+    #bottom-header #main-menu {
+        float: none;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    #bottom-header #main-menu li,
+    #bottom-header #main-menu li.mobile {
+        display: block;
+    }
+
+    #bottom-header #main-menu li.mobile .yellow-button {
+        color: #63575B;
+    }
+
+    #bottom-header #main-menu li a {
+        padding: 7px;
+        font-size: 15px;
+        margin: inherit;
+        display: inline-block;
+        min-width: 100%;
+        border: 1px solid #EFF2F9;
+        border-radius: 4px;
+        background: #fff;
+        color: #000;
+    }
+
+    #bottom-header #main-menu li a:hover {
+        opacity: 0.9;
+    }
+
+    #bottom-header #main-menu li:not(:first-child) {
+        margin-top: 10px;
+    }
+
+    #bottom-header #main-menu li:not(:first-child) a {
+        margin: 0;
+    }
+
+    #main #events #join-us {
+        padding: 20px 10px;
+        float: none;
+        width: 100%;
+    }
+
+    #events #join-us #join-us-content {
+        float: none;
+        margin: 0 auto;
+        max-width: 768px;
+        text-align: center;
+    }
+
+    #events #join-us .section-subtitle h4 {
+        padding-bottom: 10px;
+        font-size: 22px;
+    }
+
+    #events #join-us .text {
+        margin-top: 15px;
+    }
+
+    #events #join-us #join-us-buttons,
+    #events #last-events #upcoming-events {
+        margin-top: 20px;
+    }
+
+    #events #join-us #join-us-buttons .standard-button {
+        display: block;
+        padding: 7px;
+    }
+
+    #events #join-us #join-us-buttons .standard-button:not(:first-child) {
+        margin-top: 10px;
+    }
+
+    #events #last-events {
+        padding: 20px 10px;
+        float: none;
+        width: 100%;
+    }
+
+    #events #last-events .section-title {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    #events #last-events .section-title h3 {
+        font-size: 22px;
+
+    }
+
+    #events #last-events #upcoming-events .some-event {
+        float: none;
+        display: block;
+        max-width: 320px;
+        margin: 0 auto;
+        padding-left: 10px;
+        border-left: 2px solid #FBB034;
+    }
+
+    #events #last-events #upcoming-events .some-event:not(:first-child) {
+        margin-top: 20px;
+        margin-left: auto;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-date {
+        font-size: 15px;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-date .day {
+        display: none;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-day-number {
+        margin: 2px 0 0 5px;
+        font-size: 15px;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-title {
+        float: none;
+        margin-left: inherit;
+        clear: both;
+        max-width: inherit;
+        padding-top: 10px;
+    }
+
+    #events #last-events #upcoming-events .some-event .event-title .event-date-place {
+        margin-top: 5px;
+    }
+
+    #study .left {
+        border-top: 1px solid gainsboro;
+    }
+
+
+    #study .left, #study .right {
+        float: none;
+        width: 100%;
+        padding: 25px 10px;
+    }
+
+    #study .right {
+        padding-top: inherit;
+    }
+
+    #study .study-block {
+        max-width: 768px;
+        width: inherit;
+        margin: 0 auto !important;
+    }
+
+    #study .study-block .image {
+        max-width: 70px;
+        height: inherit;
+    }
+
+    #study .study-block .section-title h3 {
+        font-size: 25px;
+        padding-bottom: 10px;
+    }
+
+    #study .study-block .main-types-buttons .column a {
+        min-height: auto;
+        min-width: inherit;
+        padding: 7px;
+        font-size: 15px;
+        border-radius: 4px;
+        background: #3366ff;
+        color: #ffffff;
+        font-weight: normal;
+    }
+
+    #study .study-block .main-types-buttons .column a:first-child {
+        float: none;
+    }
+
+    #study .study-block .main-types-buttons .column a:last-child {
+        float: none;
+        margin-top: 15px;
+    }
+
+    #study .study-block .main-types-buttons .column:not(:first-child) {
+        margin-top: 15px;
+    }
+
+    #study .right .main-types-buttons .column a:hover {
+        opacity: 0.9;
+    }
+
+    #main #useful-info {
+        padding: 20px 10px;
+    }
+
+    #useful-info .useful-info-item {
+        max-width: 768px;
+        border: 1px solid gainsboro;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    #useful-info .useful-info-item:not(:first-child) {
+        margin-left: auto;
+    }
+
+    #useful-info .useful-info-item .more-button {
+        margin-top: 10px;
+    }
+
+    #useful-info .useful-info-item:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+
+    #footer {
+        background: #3366ff;
+        padding: 25px 10px;
+        text-align: center;
+    }
+
+    #footer .footer-content .footer-item {
+        display: inherit;
+    }
+
+    #footer .footer-content .footer-item:not(:first-child) {
+        margin-left: inherit;
+        margin-top: 10px;
+    }
+
+    #footer .footer-content .footer-item li:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    #footer .footer-content .footer-menu {
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    #footer .footer-content .footer-item .footer-menu li.desktop {
+        display: none;
+    }
+
+    #footer .footer-content ul.mobile {
+        display: block;
+    }
+
+    #footer .footer-content li.desktop {
+        display: none;
+    }
+
+    #footer .footer-content .footer-menu li a {
+        display: inline-block;
+        min-width: 100%;
+        border: 1px solid gainsboro;
+        border-radius: 4px;
+        padding: 7px;
+        background: #ffffff;
+        color: #000;
+    }
+
+    #footer .footer-content .footer-menu li a:hover {
+        opacity: 0.9;
+    }
+
+    #footer .footer-content #contacts {
+        margin-top: 15px;
+    }
+
+    #footer .footer-marker {
+        display: none;
+    }
+}
+
+body.other-page #header #login-info {
+    background: #2A2A2A;
+    padding: 7px 15px;
+}
+
+body.other-page #header #login-info p {
+    font-size: 13px;
+    color: gainsboro;
+    line-height: 1;
+}
+
+body.other-page #header #login-info p a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+body.other-page #header #login-info p a:hover {
+    text-decoration: underline;
+}
+
+body.other-page #header #login-info p a:not(:first-child) {
+    padding-left: 5px;
+    margin-left: 2px;
+    border-left: 1px solid gainsboro;
+}
+
+body.other-page #main {
+    padding: 30px 15px;
+}
+
+#personal-info-form {
+    padding: 45px 15px 60px;
+}
+
+aside#form-control {
+    float: left;
+    width: 180px;
+    border: 1px solid #E0E0E0;
+    border-top: none;
+    box-sizing: content-box;
+}
+
+aside#form-control #home-link a {
+    text-decoration: none;
+    background: #3366ff;
+    color: #ffffff;
+    display: block;
+    padding: 15px;
+}
+
+aside#form-control ul li {
+    display: block;
+    padding: 7px;
+    line-height: 1;
+}
+
+aside#form-control ul li a {
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    padding: 5px;
+    color: #563861;;
+}
+
+aside#form-control ul li:hover,
+aside#form-control ul li:focus {
+    border-left: 3px solid #FBB034;
+    margin-left: -3px;
+}
+
+aside#form-control ul li:hover > a,
+aside#form-control ul li:focus > a {
+    background: gainsboro;
+    color: #000;
+    font-weight: bold;
+}
+
+#personal-info-form #form {
+    float: left;
+    margin-left: 35px;
+    width: 100%;
+    max-width: 810px;
+}
+
+#personal-info-form #form .section-title h3 {
+    font-family: 'Georgia', serif;
+    text-transform: capitalize;
+    font-size: 25px;
+    color: #3366ff;
+}
+
+#personal-info-form #form .section-title .text {
+    margin-top: 10px;
+    max-width: 695px;
+}
+
+#personal-info-form #form .section-title .text p {
+    font-size: 14px;
+}
+
+#personal-info-form #form .section-title .text ul li {
+    padding-left: 50px;
+    margin-top: 5px;
+}
+
+#personal-info-form #form .form-item {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+
+#personal-info-form #form .form-item .form-title {
+    background: #0066cc;
+    color: #ffffff;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#personal-info-form #form .form-item .form-subtitle {
+    padding: 7px;
+    font-size: 13px;
+    background: #0033cc;
+    color: #ffffff;
+    line-height: 1;
+}
+
+#personal-info-form #form .form-item .form-subtitle .del {
+    float: right;
+    text-decoration: none;
+}
+
+#personal-info-form #form .form-item .change {
+    float: right !important;
+    color: #66668c;
+    font-weight: bold;
+    text-align: right;
+    width: 80px !important;
+    line-height: 2;
+}
+
+#personal-info-form #form .form-item .fields {
+    border: 1px solid #3366ff;
+    border-top: none;
+    padding: 5px 7px;
+}
+
+#personal-info-form #form .form-item .fields label {
+    display: flex;
+}
+
+#personal-info-form #form .form-item .fields label:not(:first-child) {
+    margin-top: 6px;
+}
+
+#personal-info-form #form .form-item .fields label span {
+    float: left;
+    width: 175px;
+    font-size: 14px;
+    position: relative;
+}
+
+#personal-info-form #form .form-item .fields label input,
+#personal-info-form #form .form-item .fields label select,
+#personal-info-form #form .form-item .fields label textarea {
+    width: 100%;
+    min-height: 30px;
+    padding: 5px;
+    resize: none;
+    border-radius: 3px;
+    border: 1px solid #B8B8B8;
+}
+
+#personal-info-form #form .form-item .fields label span.permanent {
+    margin-left: 145px;
+    color: #66668c;
+    font-weight: bold;
+}
+
+#personal-info-form #form .form-item .fields label span .optional {
+    float: none;
+    font-size: 12px;
+    color: #B8B8B8;
+    position: absolute;
+    left: 90px;
+    top: 3px;
+}
+
+#personal-info-form #form .form-item .fields label input[type=date] {
+    max-width: 25%;
+    margin-left: -30px;
+}
+
+#personal-info-form #form .form-item .form-subtitle .def-text {
+    float: left;
+    max-width: 80%;
+}
+
+#personal-info-form #form .form-item .form-subtitle .def {
+    float: right;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+#personal-info-form #form .form-item .fields p {
+    font-size: 14px;
+}
+
+#personal-info-form #form .form-item .fields ul {
+    display: block;
+}
+
+#personal-info-form #form .form-item .fields ul li {
+    line-height: 1.8;
+    font-size: 14px;
+    list-style: initial;
+    margin-left: 20px;
+}
+
+#personal-info-form #form .form-item .fields ul input[type=radio] {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+#personal-info-form #form .form-item .fields label.birthdate #id_birthdate_day,
+#personal-info-form #form .form-item .fields label.birthdate #id_spouse_dob_day {
+    width: 120px;
+}
+
+#personal-info-form #form .form-item .fields label.birthdate #id_birthdate_month,
+#personal-info-form #form .form-item .fields label.birthdate #id_spouse_dob_month {
+    width: 80px;
+    margin-left: 5px;
+}
+
+#personal-info-form #form .form-item .fields label.birthdate #id_birthdate_year,
+#personal-info-form #form .form-item .fields label.birthdate #id_spouse_dob_year {
+    width: 100px;
+    margin-left: 5px;
+}
+
+#id_convenant_accepted li,
+#id_doctrine_accepted li,
+#id_unity_accepted li,
+#id_confirmed li,
+#id_been_expelled li,
+#id_being_expelled li,
+#id_ukr_native li,
+#id_high_school_grad li {
+    list-style: none !important;
+    margin-left: inherit !important;
+}
+
+.tinynav {
+    display: none;
+    width: 100%;
+}
+
+#main .header_logo {
+    padding: 25px 0;
+    background: #6699ff;
+}
+
+#main .header_logo a {
+    text-decoration: none;
+    color: #ffffff;
+    display: inline-block;
+}
+
+#main #useful-info .text-content {
+    float: left;
+    width: 80%;
+}
+
+#main #useful-info .text-content p {
+    font-size: 14px !important;
+    line-height: 1.7;
+    display: inline-block;
+}
+
+#main #useful-info .text-content p img {
+    max-width: 220px;
+    float: left;
+    padding: 0 20px 0 0;
+}
+
+#main #useful-info aside#form-control {
+    float: right;
+}
+
+#main #useful-info table {
+    border: 3px solid #000000;
+}
+
+#main #useful-info table tr:not(:last-child) {
+    border-bottom: 2px solid #000000;
+}
+
+#main #useful-info table tr th:not(:last-child),
+#main #useful-info table tr td:not(:last-child) {
+    border-right: 2px solid #000000;
+}
+
+#main #useful-info table tr th {
+    background: #D9E1F2;
+    font-weight: bold;
+}
+
+#main #useful-info table tr th,
+#main #useful-info table tr td {
+    padding: 5px;
+    font-size: 14px;
+}
+
+#main #useful-info table tr td a {
+    text-decoration: none;
+}
+
+#main #useful-info #contact_form label {
+    display: block;
+    float: left;
+    font-size: 23px;
+    font-weight: 100;
+    height: 56px;
+    line-height: 56px;
+}
+
+#main #useful-info #contact_form input,
+#main #useful-info #contact_form input:not([type='submit']) {
+    background-color: #fff;
+    border: 1px solid #c6c6c6;
+    border-radius: 5px;
+    color: black;
+    float: left;
+    font-size: 20px;
+    padding: 10px;
+    position: relative;
+}
+
+#contact_form .with_captcha img, #order_server .with_captcha img, #login-form .with_captcha img, .comment-form .with_captcha img {
+    float: left;
+    background: url(/media/img/narr.png) no-repeat scroll right 18px;
+    background-position: 95% 40%;
+    padding-right: 32px;
+    padding-top: 5px;
+    width: 120px;
+    margin-right: 100px;
+}
+
+#contact_form label, #order_server label, #login-form label, .comment-form label {
+    min-width: 220px;
+}
+
+#contact_form input[type=submit] {
+    margin-top: 15px;
+}
+
+#photo_single img {
+    margin: auto;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+#photos {
+    line-height: 0;
+    -webkit-column-count: 5;
+    -webkit-column-gap: 0;
+    -moz-column-count: 5;
+    -moz-column-gap: 0;
+    column-count: 5;
+    column-gap: 0;
+
+    margin-top: 75px;
+}
+
+#photos img {
+    width: 100% !important;
+    height: auto !important;
+    border: 3px solid #FFF;
+}
+
+.lectures .text-content ul li {
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+    clear: both;
+    min-height: 50px;
+    display: inline-flex;
+    width: 100%;
+}
+
+.lectures .text-content ul li:first-child {
+    border-top: 1px solid #ccc;
+}
+
+.lectures .text-content ul li a {
+    display: flex;
+    align-items: center;
+}
+
+.lectures .text-content ul li img {
+    float: left;
+    max-width: 60px;
+    margin-right: 30px;
+}
+
+@media (max-width: 1200px) {
+    #photos {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media (max-width: 1000px) {
+    #photos {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media (max-width: 800px) {
+    #photos {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (max-width: 400px) {
+    #photos {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media only screen and (max-width: 1074px) {
+    #main #useful-info .text-content p img {
+        float: none;
+        padding: inherit;
+        width: 220px;
+        margin: 0 auto 20px;
+        display: block;
+        max-width: inherit;
+    }
+
+    #main #useful-info .text-content {
+        float: none;
+        width: inherit;
+    }
+
+    #main #useful-info aside#form-control {
+        float: none;
+    }
+
+    #main #useful-info aside#form-control .tinynav {
+        margin: 15px 0;
+    }
+
+    #main .header_logo {
+        padding: 25px 10px;
+    }
+
+    aside#form-control {
+        border: none;
+        box-sizing: inherit;
+    }
+
+    #home-link {
+        display: none;
+    }
+
+    .tinynav {
+        display: block;
+    }
+
+    #form-control #form-menu {
+        display: none;
+    }
+
+    aside#form-control {
+        float: none;
+        width: inherit;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+
+    #personal-info-form #form {
+        float: none;
+        width: inherit;
+        max-width: 768px;
+        margin: 25px auto 0;
+    }
+
+    #personal-info-form #form .section-title {
+        text-align: center;
+    }
+
+    #personal-info-form #form .form-item .fields label {
+        display: block;
+    }
+
+    #personal-info-form #form .form-item .fields label span {
+        width: inherit;
+        font-size: 13px;
+    }
+
+    #personal-info-form #form .form-item .fields label.birthdate #id_birthdate_day,
+    #personal-info-form #form .form-item .fields label.birthdate #id_spouse_dob_day,
+    #personal-info-form #form .form-item .fields label.birthdate #id_birthdate_month,
+    #personal-info-form #form .form-item .fields label.birthdate #id_spouse_dob_month,
+    #personal-info-form #form .form-item .fields label.birthdate #id_birthdate_year,
+    #personal-info-form #form .form-item .fields label.birthdate #id_spouse_dob_year {
+        width: 100%;
+        margin-left: inherit;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    #personal-info-form #form .form-item .fields ul li label {
+        display: flex;
+    }
+
+    #personal-info-form #form #address label:first-child span {
+        display: none;
+    }
+
+    #personal-info-form #form .form-item .form-subtitle .def-text {
+        float: none;
+        max-width: inherit;
+    }
+
+    #personal-info-form #form .form-item .form-subtitle .def {
+        float: left;
+        display: block;
+    }
+}
+
+.blog_item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    clear: both;
+    min-height: 40px;
+}
+
+.blog_item.first_item {
+    border-top: 1px solid #ccc;
+}
+
+.post_date {
+    width: 200px;
+}
+
+.left-object {
+    float: left;
+}
+
+body.color-black #photos img {
+    border-color: #000;
+}
+
+body.color-sepia #photos img {
+    border-color: #f9f5ea;
+}
+
+main .pagination-arrows {
+    position: fixed;
+    font-size: 30px;
+    top: 25%;
+    width: 80px;
+    display: table;
+}
+
+main .pagination-arrows a {
+    text-decoration: none;
+    color: #000000;
+    display: table-cell;
+    height: 300px;
+    vertical-align: middle;
+    visibility: hidden;
+}
+
+main .pagination-arrows:hover > a {
+    visibility: visible;
+}
+
+main #arrow-left {
+    left: 0;
+}
+
+main #arrow-left a {
+    padding-left: 20px;
+}
+
+main #arrow-right {
+    right: 0;
+}
+
+main #arrow-right a {
+    padding-right: 20px;
+    text-align: right;
+}
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.col:before,
+.clearfix:after,
+.col:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after,
+.col:after {
+    clear: both;
+}
+
+#useful-info ul > li {
+    margin-left: 20px;
+}

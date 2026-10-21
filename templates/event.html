@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block banner %}{% endblock %}
+{% block content %}
+<div class="header_logo"><div class="container">
+    <a class="logo desktop" href="/{{ section.event }}/{{ event.slug }}/" title="{{ event.summary }}"><h1>{{ event.summary }}</h1></a>
+</div></div>
+<section id="useful-info"><div class="container">
+    <div class="text-content">{{ event.desc | safe }}</div>
+    <aside id="form-control">
+        <div id="home-link"><a href="/">Дивись також</a></div>
+        <nav><ul id="form-menu">
+            <li><a href="/{{ fixed.lecture }}/">Відео-лекції</a></li>
+        </ul></nav>
+    </aside>
+</div><div class="clearfix"></div></section>
+{% endblock %}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta name="google" content="notranslate">
+    {{ seo_head(meta) }}
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link href="{{ media_url }}css/normalize.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ media_url }}css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ media_url }}css/mobile.css" rel="stylesheet" type="text/css"/>
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+<header id="header">
+    <div id="top-header">
+        <div class="container">
+            <div id="logo-wrapper">
+                <a class="desktop" href="/">
+                    <img alt="{{ site_name }}" src="{{ media_url }}img/logo.png">
+                </a>
+                <a class="mobile" href="/">
+                    <img alt="ЧПБІ" src="{{ media_url }}img/logo-mobile.png">
+                </a>
+            </div>
+            <div id="header-buttons">
+                <a class="standard-button" href="/{{ fixed.donate }}/">Доброчинцям</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    {% block banner %}
+    <section id="banner">
+        <div class="container">
+            <div id="banner-block">
+                <div class="title"><h2>Богословська Освіта і Наука</h2></div>
+                <div class="text">
+                    <p>У 1999 році на Буковині був відроджений Чернівецький православний богословський інститут —
+                        найстаріший вищий навчальний заклад нашого краю, колись знаний центр богословської освіти в
+                        Південно-Східній Європі.</p>
+                </div>
+                <div class="more-button">
+                    <a href="/theology/">дізнатися більше</a>
+                </div>
+            </div>
+        </div>
+        <video autoplay="autoplay" loop="loop" muted="muted" playsinline="playsinline" poster="{{ media_url }}img/footer-image.png">
+            <source src="{{ media_url }}img/chernivtsi.webm" type="video/webm">
+        </video>
+    </section>
+    {% endblock %}
+    {% block page_header %}{% endblock %}
+    <div id="bottom-header">
+        <div class="container">
+            <div id="main-menu">
+                <nav>
+                    <ul>
+                        <li><a href="/applicants/">Абітурієнтам</a></li>
+                        <li><a href="/{{ ot_slug }}/">Тлумачення Старого Завіту</a></li>
+                        <li><a href="/{{ nt_slug }}/">Тлумачення Нового Завіту</a></li>
+                        <li><a href="/{{ fixed.lecture }}/">Відео-лекції</a></li>
+                        <li class="mobile"><a class="standard-button" href="/{{ fixed.donate }}/">Доброчинцям</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</header>
+<main id="main">
+    {% block content %}{% endblock %}
+</main>
+<footer id="footer">
+    <div class="container">
+        <div class="footer-title"><h2>{{ site_name }}</h2></div>
+        <div class="footer-content">
+            <div class="footer-item">
+                <nav class="footer-menu"><ul>
+                    <li><a href="/history/">Історія Інституту</a></li>
+                    <li><a href="/faculty-and-departments/">Факультети та кафедри</a></li>
+                    <li><a href="/rectorate/">Ректорат</a></li>
+                    <li><a href="/academic-board/">Вчена Рада</a></li>
+                    <li><a href="/specialized-academic-board/">Спеціалізована Вчена Рада</a></li>
+                    <li><a href="/badges/">Нагрудні Знаки</a></li>
+                    <li><a href="/{{ fixed.contact }}/">Зв'язатися з нами</a></li>
+                </ul></nav>
+            </div>
+            <div class="footer-item">
+                <nav class="footer-menu"><ul>
+                    <li><a href="/anniversary/">200-РІЧЧЯ ІНСТИТУТУ (1827-2027)</a></li>
+                    <li><a href="/{{ fixed.journal }}/">Науково-Богословський Журнал «Світильник» («Candela»)</a></li>
+                </ul></nav>
+            </div>
+            <div class="footer-item">
+                <nav class="footer-menu"><ul>
+                    <li class="desktop"><a href="https://www.facebook.com/cpbi1827/" target="_blank" rel="noopener"><img src="{{ media_url }}fb.png" alt="Facebook"/></a></li>
+                    <li class="desktop"><a href="https://www.instagram.com/institut1999/" target="_blank" rel="noopener"><img src="{{ media_url }}in.png" alt="Instagram"/></a></li>
+                    <li class="desktop"><a href="https://twitter.com/cpbi1827" target="_blank" rel="noopener"><img src="{{ media_url }}tw.png" alt="Twitter"/></a></li>
+                </ul></nav>
+            </div>
+        </div>
+    </div>
+    <div class="footer-marker"><a href="/tours/">Чернівці</a></div>
+</footer>
+<script src="{{ media_url }}js/main.js"></script>
+{% if ga_id %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ ga_id }}');</script>
+{% endif %}
+</body>
+</html>

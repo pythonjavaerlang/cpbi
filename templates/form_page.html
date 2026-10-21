@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block banner %}{% endblock %}
+{% block content %}
+<div class="header_logo"><div class="container">
+    <a class="logo desktop" href="/{{ page_slug }}/"><h1>{{ page_title }}</h1></a>
+</div></div>
+<section id="useful-info"><div class="container">
+    <div class="text-content">
+        {% if intro %}<p>{{ intro }}</p>{% endif %}
+        <iframe data-tally-src="https://tally.so/embed/{{ tally_form_id }}?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
+                loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0"
+                title="{{ page_title }}"></iframe>
+        <noscript>
+            <p>Щоб заповнити форму, увімкніть JavaScript або перейдіть за
+               <a href="https://tally.so/r/{{ tally_form_id }}">посиланням на форму</a>.</p>
+        </noscript>
+    </div>
+</div><div class="clearfix"></div></section>
+<script>
+(function(){var d=document,w="https://tally.so/widgets/embed.js",v=function(){typeof Tally!=="undefined"?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc;});};
+if(typeof Tally!=="undefined"){v();}else if(!d.querySelector('script[src="'+w+'"]')){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s);}})();
+</script>
+{% endblock %}

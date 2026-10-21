@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="events">
+    <div id="join-us">
+        <div id="join-us-content">
+            <div class="section-subtitle"><h4>Хочеш навчатися ?</h4></div>
+            <div id="join-us-buttons">
+                <a class="standard-button" href="/rules/">Правила прийому</a>
+                <a class="standard-button yellow-button" href="/{{ fixed.apply }}/">Вступ <i class="fas fa-caret-right"></i></a>
+            </div>
+            <div class="text">
+                <p>Зв'язок <a href="tel:+380685335330">068 533 53 30</a>, <a href="tel:+380502047530">050 204 75 30</a></p>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+<section id="study">
+    <div class="left"><div class="study-block">
+        <div class="section-title"><h3>Яка програма підійде мені ?</h3></div>
+        <div class="main-types-buttons">
+            <div class="column"><a href="/bachelor/">бакалаврат</a><a href="/candidate/">аспірантура</a></div>
+            <div class="clearfix"></div>
+            <div class="column"><a href="/master/">магістратура</a><a href="/doctor/">докторантура</a></div>
+            <div class="clearfix"></div>
+        </div>
+    </div></div>
+    <div class="right"><div class="study-block">
+        <div class="section-title"><h3>спосіб навчання</h3></div>
+        <div class="main-types-buttons">
+            <div class="column"><a href="/on-site/">в інституті</a><a href="/distance-learning/">заочно</a></div>
+            <div class="clearfix"></div>
+            <div class="column"><a href="/externship/">Екстернат</a><a href="/online/">Online Навчання</a></div>
+            <div class="clearfix"></div>
+        </div>
+    </div></div>
+    <div class="clearfix"></div>
+</section>
+<section id="useful-info">
+    <div class="container">
+        <div class="column">
+            <div class="useful-info-item">
+                <div class="item-title"><h3><a href="/{{ ot_slug }}/">Тлумачення Старого Завіту</a></h3></div>
+                <div class="text"><p>Роз’яснення книг Святого Письма Старого Завіту українською мовою — законодавчі, історичні, повчальні та пророчі книги.</p></div>
+                <div class="more-button"><a href="/{{ ot_slug }}/">читати »</a></div>
+            </div>
+            <div class="useful-info-item">
+                <div class="item-title"><h3><a href="/{{ nt_slug }}/">Тлумачення Нового Завіту</a></h3></div>
+                <div class="text"><p>Тлумачення чотирьох Євангелій, книги Діянь апостолів та новозавітних послань.</p></div>
+                <div class="more-button"><a href="/{{ nt_slug }}/">читати »</a></div>
+            </div>
+            <div class="useful-info-item">
+                <div class="item-title"><h3><a href="/greek/">Грецький інститут візантійської та новогрецької філології, історії та культури</a></h3></div>
+                <div class="text"><p>Викладання давньогрецької і новогрецької мов здійснюють висококваліфіковані фахівці, які закінчили Афінський та Салонікійський національні університети (Греція).</p></div>
+                <div class="more-button"><a href="/greek/">дізнатися більше »</a></div>
+            </div>
+            <div class="useful-info-item">
+                <div class="item-title"><h3><a href="/icon/">Інститут Іконописного Мистецтва</a></h3></div>
+                <div class="text"><p>Створений з метою наукового осмислення й поглиблення православного розуміння ікони та фахового навчання іконопису.</p></div>
+                <div class="more-button"><a href="/icon/">дізнатися більше »</a></div>
+            </div>
+            {% if latest_news %}
+            <div class="useful-info-item">
+                <div class="item-title"><h3><a href="/{{ fixed.news }}/">Новини</a></h3></div>
+                <div class="text"><p><a href="/{{ section.news }}/{{ latest_news.slug }}/">{{ latest_news.title }}</a></p></div>
+                <div class="more-button"><a href="/{{ fixed.news }}/">Усі новини »</a></div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="column"></div>
+    </div>
+</section>
+{% endblock %}

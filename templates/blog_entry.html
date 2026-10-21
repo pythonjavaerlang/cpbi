@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block banner %}{% endblock %}
+{% block content %}
+<div class="header_logo"><div class="container">
+    <a class="logo desktop" href="/{{ fixed.news }}/"><h1>Новини</h1></a>
+</div></div>
+<section id="useful-info"><div class="container">
+    <h1 class="products_title" style="color:#0E4C81;"><a href="/{{ fixed.news }}/">Новини</a> &rsaquo; {{ entry.title }}</h1>
+    {{ entry.body | safe }}
+    <span class="date">{{ entry.date }}</span>
+</div></section>
+{% endblock %}

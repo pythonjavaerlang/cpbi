@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    {{ seo_head(meta) }}
+    <link href="{{ media_url }}css/book_normalize.css" rel="stylesheet" type="text/css">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link href="{{ media_url }}css/book.css" rel="stylesheet" type="text/css">
+    {% if issue.css %}<style type="text/css">{{ issue.css }}</style>{% endif %}
+</head>
+<body>
+<header id="header">
+    <div class="full-width-container">
+        <div id="logo-wrapper">
+            <a class="desktop" href="/{{ fixed.journal }}/"><img alt="{{ site_name }}" src="{{ media_url }}cpbi-building_w.png"></a>
+        </div>
+        <div class="header-title"><h2>{{ issue.title }}</h2></div>
+        <div class="header-buttons"><ul>
+            <li class="open-chapters-popup"><i class="fas fa-list"></i></li>
+            <li class="fullscreen"><i class="fas fa-expand-arrows-alt"></i></li>
+        </ul></div>
+        <div class="clearfix"></div>
+    </div>
+</header>
+<main id="main">
+    <div class="full-width-container"><section id="book">{{ issue.text | safe }}</section></div>
+    <div class="pagination-arrows" id="arrow-left">{% if prev_url %}<a href="{{ prev_url }}"><i class="fas fa-chevron-left"></i></a>{% endif %}</div>
+    <div class="pagination-arrows" id="arrow-right">{% if next_url %}<a href="{{ next_url }}"><i class="fas fa-chevron-right"></i></a>{% endif %}</div>
+</main>
+<footer id="footer"><div class="full-width-container"><div class="buttons">
+    {% if prev_url %}<a class="previous" href="{{ prev_url }}" style="float:left;">&laquo; "{{ prev_title }}"</a>{% endif %}
+    {% if next_url %}<a class="next" href="{{ next_url }}" style="float: right;">"{{ next_title }}" &raquo;</a>{% endif %}
+</div><div class="clearfix"></div></div></footer>
+<div class="chapters-popup popup"><div class="popup-content">
+    <div class="popup-header"><span class="popup-title">Зміст</span>
+        <span class="close close-chapters-popup"><i class="fa fa-times"></i></span></div>
+    <div class="popup-items"><ul>
+        {% for it in contents %}<li><a href="/{{ section.journal }}/{{ it.slug }}/">{{ it.title }}</a></li>{% endfor %}
+    </ul></div>
+</div></div>
+<script src="{{ media_url }}js/book.js"></script>
+</body>
+</html>
