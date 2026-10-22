@@ -14,5 +14,6 @@ Thumbs.db
 *.swp
 
 # Content conversion artifacts (local only)
-content/export.json.bak-*
+content/export.json.bak*
 _convert_all.log
+_*.log
