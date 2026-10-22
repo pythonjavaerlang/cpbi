@@ -17,7 +17,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 import config
 from og_image import generate_og_image
-from seo import SeoMeta, seo_head, organization_schema, website_schema
+from seo import SeoMeta, seo_head, organization_schema, website_schema, article_schema
 from slugs import slugify
 from book_descriptions import description_for
 
@@ -265,9 +265,12 @@ def build():
             path = f"{bslug}/{cslug}"
             prev_url = f"/{bslug}/{chapter_slug[chs[i-1]['id']]}/" if i > 0 else None
             next_url = f"/{bslug}/{chapter_slug[chs[i+1]['id']]}/" if i < len(chs) - 1 else None
-            desc = strip_html(ch["text"]) or f"{b['title']} — {ch['title']}"
+            desc = description_for(ch["title"]) or strip_html(ch["text"]) or f"{b['title']} — {ch['title']}"
             meta = make_meta(path, ch["title"], desc, og_type="article",
-                             subtitle=b["title"])
+                             subtitle=b["title"],
+                             structured=[article_schema(
+                                 ch["title"], desc, canonical(path),
+                                 section=b["title"])])
             html = env.get_template("chapter.html").render(
                 meta=meta,
                 chapter={"title": ch["title"], "text": ch["text"], "css": ch.get("css"), "description": description_for(ch["title"])},
@@ -286,8 +289,11 @@ def build():
             ch = chs[0]
             cslug = chapter_slug[ch["id"]]
             next_url = f"/{bslug}/{chapter_slug[chs[1]['id']]}/" if len(chs) > 1 else None
-            desc = strip_html(ch["text"]) or f"{b['title']} — {ch['title']}"
-            meta = make_meta(bslug, b["title"], desc, og_type="article", subtitle=b["title"])
+            desc = description_for(ch["title"]) or strip_html(ch["text"]) or f"{b['title']} — {ch['title']}"
+            meta = make_meta(bslug, b["title"], desc, og_type="article", subtitle=b["title"],
+                             structured=[article_schema(
+                                 b["title"], desc, canonical(bslug),
+                                 section=b["title"])])
             html = env.get_template("chapter.html").render(
                 meta=meta,
                 chapter={"title": ch["title"], "text": ch["text"], "css": ch.get("css"), "description": description_for(ch["title"])},

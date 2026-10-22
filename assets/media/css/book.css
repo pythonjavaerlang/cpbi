@@ -184,6 +184,7 @@ header .header-title {
     background: #ffffff;
 }
 
+header .header-title h1,
 header .header-title h2 {
     font-size: 14px;
     color: #9a938d;
@@ -431,6 +432,7 @@ body.color-sepia {
 }
 
 body.color-sepia header .move-back a .fas,
+body.color-sepia header .header-title h1,
 body.color-sepia header .header-title h2,
 body.color-sepia header .header-buttons ul li .fas,
 body.color-sepia .close i,
@@ -459,6 +461,7 @@ body.color-black {
 }
 
 body.color-black header .move-back a .fas,
+body.color-black header .header-title h1,
 body.color-black header .header-title h2,
 body.color-black header .header-buttons ul li .fas,
 body.color-black main .pagination-arrows a,

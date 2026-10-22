@@ -343,3 +343,116 @@ def _link_text_bare(text: str, current_cid: int) -> tuple[str, int]:
 
     out = _BARE_REF.sub(repl, text)
     return out, count
+
+
+
+# ── Dead-fragment remapping ──────────────────────────────────────────────────
+# Some references point at a verse that is not the START of any comment block
+# and is not covered by any block range we captured, so the generated #vC-V
+# anchor does not exist. Rather than let such a link land at the page top, we
+# remap it to the nearest *existing* anchor in the SAME chapter (greatest start
+# verse <= the referenced verse), i.e. the comment block that most plausibly
+# discusses that verse. If the chapter has no anchors at all, the fragment is
+# dropped so the link still reaches the correct page.
+
+_HREF_RE = re.compile(r'(<a class="xref" href=")([^"]*)(">)')
+
+
+def anchors_of(html: str) -> set:
+    """Return the set of anchor ids present in a chapter's HTML."""
+    return set(re.findall(r'id="(v\d+-\d+)"', html))
+
+
+def _chapter_anchor_starts(anchor_set):
+    """Map chapter -> sorted list of start-verses that have an anchor."""
+    by_ch = {}
+    for a in anchor_set:
+        mm = re.match(r'v(\d+)-(\d+)$', a)
+        if mm:
+            by_ch.setdefault(int(mm.group(1)), []).append(int(mm.group(2)))
+    for k in by_ch:
+        by_ch[k].sort()
+    return by_ch
+
+
+def remap_dead_fragments(html: str, anchors_by_cid_path):
+    """Rewrite every xref href whose #fragment is missing on its target page.
+
+    anchors_by_cid_path: dict  path(str) -> (anchor_set, starts_by_chapter)
+      where path is the href WITHOUT the fragment (e.g. '/slug/chap/' or '' for
+      a same-page link). Returns (html, remapped_count, dropped_count).
+    """
+    remapped = [0]
+    dropped = [0]
+
+    def repl(m):
+        pre, href, post = m.group(1), m.group(2), m.group(3)
+        if '#' not in href:
+            return m.group(0)
+        path, frag = href.split('#', 1)
+        entry = anchors_by_cid_path.get(path)
+        if entry is None:
+            return m.group(0)  # unknown page; leave untouched
+        anchor_set, starts = entry
+        if frag in anchor_set:
+            return m.group(0)  # already valid
+        # Parse the fragment's chapter/verse.
+        fm = re.match(r'v(\d+)-(\d+)$', frag)
+        if not fm:
+            return m.group(0)
+        c, v = int(fm.group(1)), int(fm.group(2))
+        cand = [s for s in starts.get(c, []) if s <= v]
+        if cand:
+            new_frag = f'v{c}-{cand[-1]}'   # nearest preceding block start
+            remapped[0] += 1
+            return f'{pre}{path}#{new_frag}{post}'
+        # No anchor in this chapter: drop the fragment, keep the page link.
+        dropped[0] += 1
+        return f'{pre}{path}{post}'
+
+    out = _HREF_RE.sub(repl, html)
+    return out, remapped[0], dropped[0]
+
+
+
+# ── Link title (tooltip) injection ───────────────────────────────────────────
+# Add a human-readable title="<Book> <ref text>" to every xref link so hovering
+# shows the destination. The book name is derived from the target page; the ref
+# text is the link's visible content.
+
+_A_FULL = re.compile(r'<a class="xref" href="([^"]+)"(?P<extra>[^>]*)>(?P<txt>[^<]*)</a>')
+
+
+def add_link_titles(html: str, path_to_title: dict, current_title: str) -> tuple[str, int]:
+    """path_to_title: page path ('/slug/chap/') -> human book title.
+    current_title: title of the page we are processing (for same-page '#...').
+    Returns (html, count). Idempotent: links that already have title= are left."""
+    count = 0
+
+    def repl(m):
+        nonlocal count
+        if 'title=' in m.group('extra'):
+            return m.group(0)                 # already titled
+        href = m.group(1)
+        txt = m.group('txt')
+        path = href.split('#', 1)[0]
+        book = current_title if path == '' else path_to_title.get(path)
+        if not book:
+            return m.group(0)
+        # Build a clear tooltip: full book name + the numeric reference portion.
+        ref = _ref_numerals(txt)
+        title = f'{book} {ref}'.strip() if ref else book
+        title = title.replace('"', '&quot;')
+        count += 1
+        return (f'<a class="xref" href="{href}"{m.group("extra")} '
+                f'title="{title}">{txt}</a>')
+
+    out = _A_FULL.sub(repl, html)
+    return out, count
+
+
+def _ref_numerals(txt: str) -> str:
+    """Extract the 'C:V[-V][,...]' numeric reference from the visible link text,
+    dropping any leading book abbreviation."""
+    m = re.search(r'\d{1,3}:\d{1,3}[\d:,\-–абвАБВ\s]*', txt)
+    return m.group(0).strip() if m else txt.strip()

@@ -64,6 +64,32 @@ def website_schema() -> dict:
     }
 
 
+def article_schema(title: str, description: str, url: str, *,
+                   section: str = "", image: str | None = None) -> dict:
+    """Structured data for a commentary chapter / article page."""
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": title,
+        "description": description,
+        "inLanguage": config.LANG,
+        "mainEntityOfPage": {"@type": "WebPage", "@id": url},
+        "url": url,
+        "isPartOf": {"@type": "WebSite", "name": config.SITE_NAME, "url": config.BASE_URL},
+        "publisher": {
+            "@type": "EducationalOrganization",
+            "name": config.SITE_NAME,
+            "url": config.BASE_URL,
+        },
+        "author": {"@type": "Organization", "name": config.SITE_NAME},
+    }
+    if section:
+        data["articleSection"] = section
+    if image:
+        data["image"] = _abs(image)
+    return data
+
+
 def seo_head(meta: SeoMeta) -> str:
     og_image_abs = _abs(meta.og_image)
     parts: list[str] = []
