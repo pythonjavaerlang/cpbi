@@ -159,6 +159,26 @@ def build_verse_index(ranges):
     return idx
 
 
+# Reconstruct a verse index from anchors ALREADY present in a chapter's HTML
+# (used when re-processing data that was anchored in a previous run).
+_MARKER_WITH_ID = re.compile(
+    r'<span class="s b"[^>]*id="v(\d{1,3})-(\d{1,3})"[^>]*>\s*'
+    r'(\d{1,3}):(\d{1,3})(?:[-–](\d{1,3}))?'
+)
+
+def verse_index_from_html(html: str) -> dict:
+    idx = {}
+    for m in _MARKER_WITH_ID.finditer(html):
+        aid = f"v{m.group(1)}-{m.group(2)}"
+        c = int(m.group(3)); vs = int(m.group(4))
+        ve = int(m.group(5)) if m.group(5) else vs
+        if ve < vs:
+            vs, ve = ve, vs
+        for v in range(vs, ve + 1):
+            idx.setdefault((c, v), aid)
+    return idx
+
+
 # ── Reference linking ────────────────────────────────────────────────────────
 # Capture any abbreviation-like token (optional leading 1-3, Cyrillic letters,
 # trailing period) followed by C:V. We then normalise and look it up in the
@@ -190,6 +210,32 @@ def _href(cid: int, c: str, v: str):
 
 # Split HTML into segments, tagging whether each is inside a tag or inside an <a>.
 _TAG_OR_TEXT = re.compile(r'<[^>]+>|[^<]+')
+
+# A bare verse reference "C:V[-V][part]" with no book abbreviation. We DON'T
+# require word boundaries that would include a preceding abbreviation; the
+# tokenizer already skips text inside <a>, and _link_text_bare refuses to match
+# when the digits are immediately preceded by a book-abbreviation+period.
+_BARE_REF = re.compile(
+    r'(?P<c>\d{1,3}):(?P<v>\d{1,3})(?P<rng>[-–]\d{1,3})?(?P<part>[абвАБВ]?)'
+)
+# A book abbreviation + period right before the match means it is an
+# abbreviated reference (already linked) -> skip.
+_ABBR_TAIL = re.compile(r'[А-ЯІЇЄҐ][А-ЯІЇЄҐа-яіїєґ]{0,6}\.\s?$')
+
+
+def _same_page_href(cid: int, c: str, v: str):
+    """Anchor on the CURRENT page for a bare ref, only if the anchor exists."""
+    idx = _VINDEX.get(cid)
+    if not idx:
+        return None
+    try:
+        key = (int(c), int(v))
+    except ValueError:
+        return None
+    aid = idx.get(key)
+    if aid is None:
+        return None
+    return f"#{aid}"
 
 def link_references(html: str, current_cid: int) -> tuple[str, int]:
     """Wrap recognised references in <a>. Returns (html, link_count)."""
@@ -242,4 +288,58 @@ def _link_text(text: str, current_cid: int) -> tuple[str, int]:
         return f'<a class="xref" href="{href}">{m.group(0)}</a>'
 
     out = _REF_WITH_ABBR.sub(repl, text)
+    return out, count
+
+
+def link_bare_references(html: str, current_cid: int) -> tuple[str, int]:
+    """Wrap bare "C:V" references (no book abbreviation) that resolve to an
+    existing anchor on the CURRENT page. Safe to run after link_references:
+    text already inside <a> is skipped, so abbreviated links are never touched.
+    Returns (html, link_count)."""
+    out = []
+    in_anchor = False
+    in_marker = False
+    count = 0
+
+    for tok in _TAG_OR_TEXT.findall(html):
+        if tok.startswith('<'):
+            low = tok.lower()
+            if low.startswith('<a'):
+                in_anchor = True
+            elif low.startswith('</a'):
+                in_anchor = False
+            if 'class="s b"' in tok and low.startswith('<span'):
+                in_marker = True
+            elif low.startswith('</span>') and in_marker:
+                in_marker = False
+            out.append(tok)
+            continue
+
+        if in_anchor or in_marker:
+            out.append(tok)
+            continue
+
+        new_tok, n = _link_text_bare(tok, current_cid)
+        count += n
+        out.append(new_tok)
+
+    return ''.join(out), count
+
+
+def _link_text_bare(text: str, current_cid: int) -> tuple[str, int]:
+    count = 0
+
+    def repl(m):
+        nonlocal count
+        # Skip if immediately preceded by a book abbreviation + period
+        # (that is an abbreviated reference, handled elsewhere / already linked).
+        if _ABBR_TAIL.search(text[:m.start()]):
+            return m.group(0)
+        href = _same_page_href(current_cid, m.group('c'), m.group('v'))
+        if not href:
+            return m.group(0)        # no matching section on this page -> leave
+        count += 1
+        return f'<a class="xref" href="{href}">{m.group(0)}</a>'
+
+    out = _BARE_REF.sub(repl, text)
     return out, count
