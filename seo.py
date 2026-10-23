@@ -47,9 +47,12 @@ def organization_schema() -> dict:
         "name": config.SITE_NAME,
         "url": config.BASE_URL,
         "sameAs": [
-            "https://www.facebook.com/cpbi1827/",
-            "https://www.instagram.com/institut1999/",
-            "https://twitter.com/cpbi1827",
+            "https://www.facebook.com/bogoslovskaosvita",
+            "https://www.facebook.com/svitilnik.candela/",
+            "https://www.instagram.com/cpbi_200/",
+            "https://t.me/bohoslovskiyinstitut",
+            "https://www.tiktok.com/@institut_1999",
+            "https://www.youtube.com/@bohoslovskiyinstitut",
         ],
     }
 

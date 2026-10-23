@@ -619,6 +619,25 @@ body .standard-button:hover {
     margin-left: 5px;
 }
 
+#footer .footer-content .footer-item .footer-menu ul.social-links {
+    font-size: 0;
+}
+
+#footer .footer-content .footer-item .footer-menu ul.social-links li.desktop {
+    margin: 5px 14px 5px 0;
+}
+
+#footer .footer-content .footer-item .footer-menu ul.social-links li.desktop a {
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1;
+    transition: opacity 0.2s ease;
+}
+
+#footer .footer-content .footer-item .footer-menu ul.social-links li.desktop a:hover {
+    opacity: 0.7;
+}
+
 #footer .footer-content ul.mobile {
     display: none;
     margin-top: 10px;
@@ -632,6 +651,10 @@ body .standard-button:hover {
 #footer .footer-content #contacts {
     margin-top: 35px;
     line-height: 1.8;
+}
+
+#footer .footer-content #contacts li a {
+    text-transform: none;
 }
 
 #footer .footer-content #contacts li a:hover {
